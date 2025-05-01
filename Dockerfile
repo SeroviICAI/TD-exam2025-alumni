@@ -2,7 +2,7 @@
 FROM python:3.11-slim
 
 # Establece el directorio de trabajo dentro del contenedor
-WORKDIR /app
+WORKDIR /
 
 # Copia solo los archivos necesarios para instalar dependencias primero (optimiza la caché de Docker)
 COPY requirements.txt .
@@ -17,5 +17,5 @@ COPY . .
 EXPOSE 5001
 
 # Comando para ejecutar la aplicación (ajusta según el framework usado)
-CMD ["python", "/app/main.py"]
+CMD ["python", "main.py"]
 
