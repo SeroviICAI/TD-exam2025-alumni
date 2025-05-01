@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: exam2025
-        image: gcr.io/icai2025/exam2025:latest
+        image: gcr.io/prime-apricot-458509-e7/exam2025:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5001
