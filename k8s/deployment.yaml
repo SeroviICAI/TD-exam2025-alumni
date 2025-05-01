@@ -24,5 +24,5 @@ spec:
         livenessProbe:
           periodSeconds: 2
           httpGet:
-            path: /
+            path: /probe
             port: 5001
