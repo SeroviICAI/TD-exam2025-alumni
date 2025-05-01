@@ -36,4 +36,3 @@ resource "google_storage_bucket" "td_bucket" {
     enabled = true
   }
 }
-
