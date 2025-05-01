@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: exam2025
-        image: gcr.io/prime-apricot-458509-e7/exam2025:latest
+        image: gcr.io/icai2025-456716/exam2025:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 5001
+        - containerPort: 5000
         env:
           - name: GCP_BUCKET_NAME
             value: "REPLACE_BUCKET_NAME"
@@ -25,4 +25,4 @@ spec:
           periodSeconds: 2
           httpGet:
             path: /probe
-            port: 5001
+            port: 5000

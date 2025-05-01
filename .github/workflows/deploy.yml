@@ -4,15 +4,12 @@ on:
   push:
     branches:
       - main
+      - master
 
 env:
-  GCP_BUCKET_NAME: ${{ secrets.GCP_BUCKET_NAME }}
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
-  GKE_ZONE: ${{ secrets.GKE_ZONE }}
   IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/exam2025
-  
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -41,9 +38,10 @@ jobs:
         sed "s/REPLACE_BUCKET_NAME/${{ secrets.GCP_BUCKET_NAME }}/g" k8s/deployment.yaml > k8s/deployment.generated.yaml
     - name: Deploy to GKE
       run: |
-        gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
+        gcloud container clusters get-credentials ${{ secrets.GKE_CLUSTER }} --location us-central1-c
         kubectl apply -f k8s/deployment.generated.yaml
         kubectl apply -f k8s/service.yaml
     - name: Deploy to App Engine
       run: |
         sed "s/REPLACE_BUCKET_NAME/${{ secrets.GCP_BUCKET_NAME }}/g" app.yaml > app.generated.yaml
+        gcloud app deploy app.generated.yaml --quiet

@@ -5,10 +5,6 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-@app.route("/probe", methods=["GET", "POST"])
-def health():
-    return "OK", 200
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -32,5 +28,11 @@ def index():
 
     return render_template("index.html")
 
+
+@app.route("/probe", methods=["GET", "POST"])
+def health():
+    return "Ok", 200
+
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host="0.0.0.0", port=5000)
