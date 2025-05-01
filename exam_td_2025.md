@@ -1,4 +1,4 @@
-# Consideraciones del examen
+# Consideraciones examen
 
 - 0.2 puntos cada pregunta correcta (4 en total)
 - No penalizan las respuestas incorrectas
